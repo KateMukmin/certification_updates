@@ -1,0 +1,68 @@
+/* ============================================================
+   Field Control Analytics — Typography Tokens
+   Source: FCA Brand Style Guide — Typography & Text Hierarchy
+   ============================================================ */
+
+:root {
+  /* ---- Families ----
+     Poppins is the single typeface across the whole system. The aliases
+     below all resolve to Poppins; they exist only so component code can
+     express intent (display vs body vs numerals). */
+  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:    'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent:  'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-support: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* ---- Weights ---- */
+  --fw-light:    300; /* @kind font */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+
+  /* ---- Type scale: size / line-height ----
+     Headings use the display family (Poppins);
+     body, labels & UI use the body family (DM Sans). */
+
+  /* Headings (Poppins) */
+  --h1-size: 32px;  --h1-line: 140%; --h1-weight: var(--fw-semibold);
+  --h2-size: 24px;  --h2-line: 140%; --h2-weight: var(--fw-semibold);
+  --h3-size: 20px;  --h3-line: 140%; --h3-weight: var(--fw-semibold);
+  --h4-size: 18px;  --h4-line: 140%; --h4-weight: var(--fw-medium);
+  --h5-size: 16px;  --h5-line: 24px; --h5-weight: var(--fw-semibold);
+  --h6-size: 14px;  --h6-line: 20px; --h6-weight: var(--fw-semibold);
+
+  /* Body (DM Sans) */
+  --body-lg-size: 16px; --body-lg-line: 24px; /* Body 1 — Medium or Regular */
+  --body-sm-size: 12px; --body-sm-line: 18px; /* Body 3 — Medium */
+
+  /* Labels & UI (DM Sans) */
+  --label-1-size: 14px; --label-1-line: 20px; /* Label 1 — Regular */
+  --label-2-size: 12px; --label-2-line: 18px; /* Label 2 — Regular */
+  --cta-size:     14px; --cta-line:     20px; /* CTA — Medium */
+  --chip-size:    10px; --chip-line:    16px; /* Chips — Medium, +letter-spacing */
+  --table-size:   12px; --table-line:   18px; /* Table label */
+
+  /* Display numerals (Inter) — e.g. section indices, big stats */
+  --display-xxl-size: 160px;
+  --display-xl-size:  64px;
+}
+
+/* ------------------------------------------------------------
+   Optional utility classes — applying the scale directly.
+   Components are free to use the raw tokens instead.
+   ------------------------------------------------------------ */
+.fca-h1 { font-family: var(--font-display); font-size: var(--h1-size); line-height: var(--h1-line); font-weight: var(--h1-weight); color: var(--text-primary); letter-spacing: -0.01em; }
+.fca-h2 { font-family: var(--font-display); font-size: var(--h2-size); line-height: var(--h2-line); font-weight: var(--h2-weight); color: var(--text-primary); }
+.fca-h3 { font-family: var(--font-display); font-size: var(--h3-size); line-height: var(--h3-line); font-weight: var(--h3-weight); color: var(--text-primary); }
+.fca-h4 { font-family: var(--font-display); font-size: var(--h4-size); line-height: var(--h4-line); font-weight: var(--h4-weight); color: var(--text-primary); }
+.fca-h5 { font-family: var(--font-display); font-size: var(--h5-size); line-height: var(--h5-line); font-weight: var(--h5-weight); color: var(--text-primary); }
+.fca-h6 { font-family: var(--font-display); font-size: var(--h6-size); line-height: var(--h6-line); font-weight: var(--h6-weight); color: var(--text-primary); }
+
+.fca-body     { font-family: var(--font-body); font-size: var(--body-lg-size); line-height: var(--body-lg-line); font-weight: var(--fw-regular); color: var(--text-primary); }
+.fca-body-md  { font-family: var(--font-body); font-size: var(--body-lg-size); line-height: var(--body-lg-line); font-weight: var(--fw-medium);  color: var(--text-primary); }
+.fca-body-sm  { font-family: var(--font-body); font-size: var(--body-sm-size); line-height: var(--body-sm-line); font-weight: var(--fw-medium);  color: var(--text-secondary); }
+.fca-label    { font-family: var(--font-body); font-size: var(--label-1-size); line-height: var(--label-1-line); font-weight: var(--fw-regular); color: var(--text-secondary); }
+.fca-label-sm { font-family: var(--font-body); font-size: var(--label-2-size); line-height: var(--label-2-line); font-weight: var(--fw-regular); color: var(--text-secondary); }
+.fca-cta      { font-family: var(--font-body); font-size: var(--cta-size); line-height: var(--cta-line); font-weight: var(--fw-medium); }
+.fca-chip     { font-family: var(--font-body); font-size: var(--chip-size); line-height: var(--chip-line); font-weight: var(--fw-medium); letter-spacing: 0.04em; text-transform: uppercase; }

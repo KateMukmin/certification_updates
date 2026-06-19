@@ -1,0 +1,44 @@
+/* ============================================================
+   Field Control Analytics — Spacing, Radius, Shadow, Layout
+   Source: FCA Brand Style Guide — Grid & Spacing
+   8px base unit. Scale: 8 / 16 / 24 / 32 / 40 / 64 / 80 / 96 / 120
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ---- */
+  --space-0-5: 4px;   /* fine half-step */
+  --space-1:   8px;
+  --space-2:   16px;
+  --space-3:   24px;
+  --space-4:   32px;
+  --space-5:   40px;
+  --space-6:   64px;
+  --space-7:   80px;
+  --space-8:   96px;
+  --space-9:   120px;
+
+  /* ---- Radius ---- */
+  --radius-sm:   8px;    /* inputs, list rows, inner chips */
+  --radius-md:   12px;   /* cards, panels, modals */
+  --radius-lg:   16px;   /* large surfaces */
+  --radius-pill: 999px;  /* CTA buttons, chips, tags, FAB */
+
+  /* ---- Elevation / shadow ---- */
+  --shadow-card:   4px 8px 24px 0 var(--fca-shadow-tint); /* soft brand card shadow */
+  --shadow-pop:    0 8px 24px 0 rgba(0, 52, 107, 0.12);   /* dropdowns, popovers */
+  --shadow-row:    inset 0 0 0 1px var(--fca-row-border);  /* hairline row border */
+  --shadow-focus:  0 0 0 3px rgba(102, 169, 217, 0.35);    /* focus ring (brand blue) */
+
+  /* ---- Layout / grid ----
+     Desktop content max 1024px (12 cols × 50px),
+     Tablet 768px (6 cols × 88px), Mobile 320px (2 cols × 130px) */
+  --container-desktop: 1024px;
+  --container-tablet:  768px;
+  --container-mobile:  320px;
+  --gutter:            24px;
+
+  /* ---- Control sizing ---- */
+  --control-h-sm: 36px;
+  --control-h-md: 44px;  /* default button / input height (≥44 hit target) */
+  --control-h-lg: 52px;
+}

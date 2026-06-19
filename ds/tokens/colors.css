@@ -1,0 +1,80 @@
+/* ============================================================
+   Field Control Analytics — Color Tokens
+   Source: FCA Brand Style Guide (Figma, July 2024)
+   ============================================================ */
+
+:root {
+  /* ---- Brand / Navy (primary) ---- */
+  --fca-navy:          #00346B; /* Main — primary brand color */
+  --fca-navy-darker:   #00294F; /* Darker — pressed / deep surfaces */
+  --fca-navy-lighter:  #004A91; /* Lighter — hover on primary */
+  --fca-blue:          #66A9D9; /* Lighter 2 — accent / web input stroke */
+  --fca-blue-subtle:   #D4E7F5; /* Subtle — tinted surfaces, selected bg */
+  --fca-blue-wash:     #EEF6FC; /* extra-soft brand wash */
+
+  /* ---- Neutrals ---- */
+  --fca-white:         #FFFFFF;
+  --fca-ink:           #2B2A29; /* primary text / dark UI */
+  --fca-gray-600:      #727271; /* secondary text */
+  --fca-gray-400:      #B3B3B2; /* muted text / disabled */
+  --fca-page:          #FAFAFC; /* app/page background */
+  --fca-shadow-tint:   #F2F2F5; /* soft shadow color */
+
+  /* ---- Alpha neutrals (functional) ---- */
+  --fca-border:        rgba(43, 42, 41, 0.10); /* separators, borders, table header */
+  --fca-input-stroke:  rgba(43, 42, 41, 0.20); /* input field stroke (default) */
+  --fca-input-fill:    rgba(228, 231, 233, 0.40); /* input field fill */
+  --fca-table-row:     rgba(231, 231, 231, 0.20); /* table content rows */
+  --fca-row-border:    #DDE5E9; /* hairline row inset border */
+  --fca-line:          #EAEAEA; /* primary stroke/divider + switch off-track */
+
+  /* ---- Semantic ---- */
+  --fca-success:       #1BB161;
+  --fca-success-soft:  #DDF3E7; /* 10% tint */
+  --fca-warning:       #F59A00;
+  --fca-warning-soft:  #FEF4E2; /* 10% tint */
+  --fca-error:         #DF252A;
+  --fca-error-soft:    #FBE9E9; /* 10% tint */
+  --fca-info:          #006DF7;
+
+  /* ============================================================
+     Semantic aliases — prefer these in components
+     ============================================================ */
+
+  /* Text */
+  --text-primary:   var(--fca-ink);
+  --text-secondary: var(--fca-gray-600);
+  --text-muted:     var(--fca-gray-400);
+  --text-on-dark:   var(--fca-white);
+  --text-brand:     var(--fca-navy);
+  --text-link:      var(--fca-navy);
+
+  /* Surfaces */
+  --surface-page:    var(--fca-page);
+  --surface-card:    var(--fca-white);
+  --surface-brand:   var(--fca-navy);
+  --surface-subtle:  var(--fca-blue-subtle);
+  --surface-input:   var(--fca-input-fill);
+
+  /* Borders */
+  --border-subtle:  var(--fca-border);
+  --border-input:   var(--fca-input-stroke);
+  --border-focus:   var(--fca-blue);
+
+  /* Interactive (primary action) */
+  --action-bg:          var(--fca-navy);
+  --action-bg-hover:    var(--fca-navy-lighter);
+  --action-bg-active:   var(--fca-navy-darker);
+  --action-fg:          var(--fca-white);
+  --action-disabled-bg: var(--fca-blue-subtle);
+  --action-disabled-fg: #9DB6D0;
+
+  /* Status */
+  --status-success-fg: var(--fca-success);
+  --status-success-bg: var(--fca-success-soft);
+  --status-warning-fg: var(--fca-warning);
+  --status-warning-bg: var(--fca-warning-soft);
+  --status-error-fg:   var(--fca-error);
+  --status-error-bg:   var(--fca-error-soft);
+  --status-info-fg:    var(--fca-info);
+}
