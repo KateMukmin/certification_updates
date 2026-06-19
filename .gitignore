@@ -1,0 +1,8 @@
+# Vercel: static site, no build step.
+# Babel transpiles JSX in the browser, so there is nothing to compile.
+node_modules/
+.vercel/
+.DS_Store
+
+# Local dev screenshots — not needed for deployment
+screenshots/
