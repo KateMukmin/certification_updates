@@ -115,7 +115,7 @@ function RequirementsPanel({ catalogId, projects, form }) {
 }
 
 // ---------- Unified Cert Modal (Add or Edit) ----------
-function CertModal({ mode, initialCert, catalog, projects, onClose, onSave }) {
+function CertModal({ mode, initialCert, catalog, projects, onClose, onSave, existingCatalogIds = [], onOpenExisting }) {
   const isEdit = mode === 'edit';
   const [catalogId, setCatalogId] = useStateM(initialCert?.catalogId || '');
   const [certId, setCertId] = useStateM(initialCert?.certId || '');
@@ -125,8 +125,10 @@ function CertModal({ mode, initialCert, catalog, projects, onClose, onSave }) {
   const [media, setMedia] = useStateM(initialCert?.media || null);
   const [submitted, setSubmitted] = useStateM(false);
   const [hoverField, setHoverField] = useStateM(null);
+  const [dupNotice, setDupNotice] = useStateM(null); // name of cert the user tried to re-add
 
   const form = { catalogId, certId, issueDate, expirationDate, description, media };
+  const heldSet = useMemoM(() => new Set(existingCatalogIds), [existingCatalogIds]);
 
   const requiringProjects = useMemoM(
     () => catalogId ? projectsRequiringCert(catalogId, projects) : [],
@@ -137,7 +139,23 @@ function CertModal({ mode, initialCert, catalog, projects, onClose, onSave }) {
     [catalogId, requiringProjects]
   );
 
-  const items = useMemoM(() => catalog.map(c => ({ value: c.id, label: c.name })), [catalog]);
+  const items = useMemoM(
+    () => catalog.map(c => ({ value: c.id, label: c.name, held: !isEdit && heldSet.has(c.id) })),
+    [catalog, heldSet, isEdit]
+  );
+
+  // In Add mode, picking a cert the worker already holds is not allowed —
+  // route the user to the existing record instead of creating a duplicate.
+  const handlePick = (v) => {
+    if (!isEdit && heldSet.has(v)) {
+      const c = catalog.find(c => c.id === v);
+      setDupNotice(c?.name || 'This certification');
+      return;
+    }
+    setDupNotice(null);
+    setCatalogId(v);
+    setSubmitted(false);
+  };
 
   const isReq = (field) => {
     if (!catalogId) return false;
@@ -194,13 +212,41 @@ function CertModal({ mode, initialCert, catalog, projects, onClose, onSave }) {
               label="Certifications"
               required
               value={catalogId}
-              onChange={(v) => { setCatalogId(v); setSubmitted(false); }}
+              onChange={handlePick}
               items={items}
               placeholder="Select a certification"
               hasError={submitted && !catalogId}
               disabled={isEdit}
             />
           </div>
+
+          {/* Duplicate guard — picking an already-held cert routes to the existing record */}
+          {dupNotice && (
+            <div className="reveal" style={{marginBottom: 24, marginTop: -8}}>
+              <div className="banner warn">
+                <span className="banner-icon">
+                  <Icon name="info" size={20} color="var(--warn)" />
+                </span>
+                <div className="banner-body">
+                  <strong>{dupNotice}</strong> is already on this worker's profile.
+                  A certification can only exist once — open the existing record to update it.
+                  <div style={{marginTop: 12}}>
+                    <button
+                      type="button"
+                      className="btn secondary"
+                      style={{padding: '8px 18px'}}
+                      onClick={() => {
+                        const id = catalog.find(c => c.name === dupNotice)?.id;
+                        if (id && onOpenExisting) onOpenExisting(id);
+                      }}
+                    >
+                      Go to existing record
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Requirements panel — collapsible, collapsed by default */}
           {catalogId && (

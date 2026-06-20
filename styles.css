@@ -558,6 +558,27 @@ button { font-family: inherit; }
 .dropdown-item:hover { background: var(--surface-2); }
 .dropdown-item.selected { background: var(--brand); color: white; }
 .dropdown-item.empty { color: var(--text-3); padding: 16px 18px; text-align: center; }
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dropdown-item.held { color: var(--text-3); }
+.dropdown-item.held:hover { background: var(--warn-bg); }
+.dropdown-item .dd-label { flex: 1; }
+.dd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--success);
+  background: var(--success-bg);
+  padding: 2px 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
 
 /* Modal */
 .scrim {

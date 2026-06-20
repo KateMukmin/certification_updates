@@ -297,6 +297,11 @@ function App() {
           mode="add"
           catalog={data.catalog}
           projects={projects}
+          existingCatalogIds={certs.map(c => c.catalogId)}
+          onOpenExisting={(catId) => {
+            const idx = certs.findIndex(c => c.catalogId === catId);
+            if (idx >= 0) setOpenModal({ kind: 'edit', certIdx: idx });
+          }}
           onClose={() => setOpenModal(null)}
           onSave={onAdd}
         />

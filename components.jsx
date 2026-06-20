@@ -144,10 +144,16 @@ function Dropdown({
             {filtered.map(it => (
               <div
                 key={it.value}
-                className={`dropdown-item${value === it.value ? ' selected' : ''}`}
+                className={`dropdown-item${value === it.value ? ' selected' : ''}${it.held ? ' held' : ''}`}
                 onClick={() => { onChange(it.value); setOpen(false); setQuery(''); }}
               >
-                {it.label}
+                <span className="dd-label">{it.label}</span>
+                {it.held && (
+                  <span className="dd-tag">
+                    <Icon name="check" size={12} />
+                    On profile
+                  </span>
+                )}
               </div>
             ))}
           </div>
